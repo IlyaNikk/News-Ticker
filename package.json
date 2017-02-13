@@ -8,6 +8,8 @@
     "lint": "eslint './**/*.js'",
     "karma:start": "karma start",
     "karma:run": "karma run",
+    "start": "node server.js"
+
   },
 
   "repository": {
@@ -15,7 +17,7 @@
     "url": "git+https://github.com/frontend-park-mail-ru/2016_2_Unpredictable.git"
   },
   "engines": {
-    "node": "6.5.0"
+    "node": "7.5.0"
   },
   "keywords": [],
   "author": "",

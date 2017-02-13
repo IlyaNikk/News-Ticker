@@ -132,3 +132,26 @@ br{
 .inputCategory{
 	float:left
 }
+
+.formPadding{
+	margin-left: 25vw;
+}
+
+.searchInput{
+	width: 20vw;
+	padding-bottom: 1vh;
+	padding-top: 1vh;
+	padding-left: 1vw;
+	padding-right: 1vw;
+}
+
+.mainBarButton{
+	width: 8vw;
+	padding-bottom: 1vh;
+	padding-top: 1vh;
+	padding-left: 1vw;
+	padding-right: 1vw;
+	margin-left : 0.5vw;
+	margin-right: 0.5vw;
+
+}

@@ -17,15 +17,21 @@
 				placeholder: 'Search',
 			});
 			this.searchInput.get().classList.add('mainBarItems');
+			this.searchInput.get().classList.add('searchInput');
 			this.searchButton = new Button('Search');
 			this.searchButton.get().classList.remove('create');
 			this.searchButton.get().classList.add('mainBarItems');
+			this.searchButton.get().classList.add('mainBarButton');
 			this.button = new Button('Create new');
 			this.button.get().classList.remove('create');
 			this.button.get().classList.add('mainBarItems');
-			this.get().appendChild(this.searchInput.get());
-			this.get().appendChild(this.searchButton.get());
-			this.get().appendChild(this.button.get());
+			this.button.get().classList.add('mainBarButton');
+			let form = new Block('form');
+			form.get().classList.add('formPadding');
+			form.get().appendChild(this.searchInput.get());
+			form.get().appendChild(this.searchButton.get());
+			form.get().appendChild(this.button.get());
+			this.get().appendChild(form.get());
 			document.body.appendChild(this.get());
 		}
 

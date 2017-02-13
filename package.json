@@ -8,8 +8,6 @@
     "lint": "eslint './**/*.js'",
     "karma:start": "karma start",
     "karma:run": "karma run",
-    "start": "./node_modules/.bin/webpack && node server.js",
-    "webpack": "webpack --display-error-details"
   },
 
   "repository": {
@@ -34,8 +32,6 @@
     "babel-loader": "^6.2.7",
     "babel-polyfill": "^6.16.0",
     "babel-preset-latest": "^6.16.0",
-    "clean-webpack-plugin": "^0.1.14",
-    "copy-webpack-plugin": "^4.0.1",
     "css-loader": "0.25.0",
     "eslint": "^3.5.*",
     "eslint-config-airbnb": "^11.1.*",
@@ -43,9 +39,7 @@
     "eslint-plugin-jsx-a11y": "^2.2.*",
     "eslint-plugin-react": "^6.2.*",
     "eventsource-polyfill": "^0.9.6",
-    "extract-text-webpack-plugin": "^2.0.0-beta.4",
     "file-loader": "^0.9.0",
-    "html-webpack-plugin": "^2.24.1",
     "jasmine": "^2.5.2",
     "karma": "1.3.0",
     "karma-chrome-launcher": "2.0.0",
@@ -57,6 +51,5 @@
     "sass-loader": "4.0.2",
     "style-loader": "0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^2.1.0-beta.25"
   }
 }

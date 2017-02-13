@@ -11,7 +11,7 @@
 			this.get().classList.add('tag_menu');
 			let title = new Block('h2');
 			this.list = new Block('ol');
-			title.get().innerHTML = "All categories:";
+			title.get().innerHTML = "Categories:";
 			let block = new Block('div');
 			block.get().classList.add('tagPadding');
 			block.get().appendChild(title.get());
@@ -23,31 +23,45 @@
 
 		addCategory(category){
 			this.categoryArray.push(category);
-			let element = new Block('li');
 			let link = new Button(category);
 			link.get().classList.remove('create');
 			link.get().classList.add('tagButton');
-			element.get().appendChild(link.get());
-			this.list.get().appendChild(element.get());
+			this.list.get().appendChild(link.get());
 			link.get().addEventListener('click', link => {
 				link.preventDefault();
-				new NewsModel().searchNews(category)
+				new NewsModel().searchNewsCategory(category)
 					.then(result => {
-						let newsAll = document.querySelectorAll('.news');
-						let mainNews = document.querySelector('.main_news');
-						newsAll.forEach(news => {
-							mainNews.removeChild(news);
-						});
-						result.forEach(news => {
-							let newBlock = new NewsBlock();
-							newBlock.createNews(news)
-						});
+						// let newsAll = document.querySelectorAll('.news');
+						// let mainNews = document.querySelector('.main_news');
+						// newsAll.forEach(news => {
+						// 	mainNews.removeChild(news);
+						// });
+						// result.forEach(news => {
+						// 	let newBlock = new NewsBlock();
+						// 	newBlock.createNews(news)
+						// });
+						this.rememberResult(result);
+						return Promise.resolve(result);
 					});
 			})
 		}
 
-		getCategories(){
-			return this.categoryArray;
+		rememberResult(result){
+			this.result = result;
+		}
+
+		check(){
+			if (!this.result){
+				return false;
+			} else {
+				return true;
+			}
+		}
+
+		getResult(){
+			let buffer = this.result;
+			this.result = !this.result;
+			return buffer;
 		}
 	}
 

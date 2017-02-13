@@ -15,16 +15,19 @@
 			insideBlock.get().classList.add('newsForm');
 			blackBlock.get().classList.add('formPosition');
 			this.form = new Block('form');
-			this.text = new Block('h4');
+			this.text = new Block('h2');
 			this.text.get().innerHTML = 'Edit your content';
 			this.input = new Block('input', {
 				value : content
 			});
+			this.input.get().classList.add('titleForm');
 			this.editButton = new Button('Edit');
+			this.closeButton = new Button('Close');
 			this.addlistener(outsideBlock, blackBlock, id);
 			this.form.get().appendChild(this.text.get());
 			this.form.get().appendChild(this.input.get());
 			this.form.get().appendChild(this.editButton.get());
+			this.form.get().appendChild(this.closeButton.get());
 			insideBlock.get().appendChild(this.form.get());
 			outsideBlock.get().appendChild(insideBlock.get());
 			document.body.insertBefore(outsideBlock.get(), document.body.children[0]);
@@ -36,6 +39,11 @@
 			this.editButton.get().addEventListener('click',button => {
 				button.preventDefault();
 				this.news.editNews(this.input.get().value, id);
+				document.body.removeChild(outsideBlock.get());
+				document.body.removeChild(blackBlock.get());
+			});
+			this.closeButton.get().addEventListener('click', button => {
+				button.preventDefault();
 				document.body.removeChild(outsideBlock.get());
 				document.body.removeChild(blackBlock.get());
 			})

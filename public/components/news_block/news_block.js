@@ -53,6 +53,11 @@
 			});
 		}
 
+		clearNew(){
+			document.body.querySelector('.main_news').removeChild(this.get());
+
+		}
+
 	}
 
 	window.NewsBlock = NewsBlock;

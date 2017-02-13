@@ -114,6 +114,27 @@
 			})
 		}
 
+		searchNewsCategory(data){
+			return fetch(this.host + 'api/news/seach', {
+				method: 'POST',
+				mode: 'cors',
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					category: data
+				})
+			}).then(result => {
+				if (result.status >= 300) {
+					throw new Error();
+				}
+				return result.json()
+			}).catch(error => {
+				return error;
+			})
+		}
+
 		createCategory(data) {
 			return fetch(this.host + 'api/categories', {
 				method: 'POST',

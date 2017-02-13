@@ -34,9 +34,23 @@
 						this.content.setCategory(category.name);
 					});
 					this.mainBar.addListener(result);
-				})
+				});
+			this.mainBar.addSearchListener();
+			this.checkSearch();
 		}
 
+		checkSearch(){
+			setTimeout(() => {
+				if(this.mainBar.check()){
+					this.content.clearNew();
+					let news = this.mainBar.getResult();
+					news.forEach(news => {
+						this.content.setNew(news);
+					});
+				}
+				this.checkSearch();
+			},1000)
+		}
 
 	}
 

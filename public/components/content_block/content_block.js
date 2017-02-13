@@ -17,7 +17,8 @@
 			this.get().appendChild(this.mainNewsBlock.get());
 			this.get().appendChild(this.TagMenu.get());
 			document.body.appendChild(this.get());
-			this.news = []
+			this.news = [];
+			this.checkSearch();
 		}
 
 		setNew(news){
@@ -30,11 +31,26 @@
 			this.news.forEach( result =>{
 				result.clearNew();
 			});
+			this.news = [];
 		}
 
 		setCategory(category){
 			this.TagMenu.addCategory(category);
 		}
+
+		checkSearch(){
+			setTimeout(() => {
+				if(this.TagMenu.check()){
+					this.clearNew();
+					let news = this.TagMenu.getResult();
+					news.forEach(news => {
+						this.setNew(news);
+					});
+				}
+				this.checkSearch();
+			},1000)
+		}
+
 
 	}
 

@@ -29,7 +29,7 @@
 				placeholder: 'or enter new category here'
 			});
 			this.categories.get().classList.add('inputCategory');
-			//this.categories.get().classList.add('titleForm');
+			this.categories.get().classList.add('titleForm');
 			this.mainContent = new Block('textarea', {
 				name: 'content',
 				placeholder: 'Enter text here'
@@ -48,6 +48,7 @@
 				this.select.get().appendChild(option.get());
 			});
 			this.button = new Button('Create');
+			this.buttonClose = new Button('Close');
 			this.form.get().appendChild(this.title.get());
 			this.form.get().appendChild(this.newsTitle.get());
 			this.form.get().appendChild(this.newsTitleInput.get());
@@ -55,6 +56,7 @@
 			this.form.get().appendChild(this.categories.get());
 			this.form.get().appendChild(this.mainContent.get());
 			this.form.get().appendChild(this.button.get());
+			this.form.get().appendChild(this.buttonClose.get());
 			block.get().appendChild(this.form.get());
 			outsideBlock.get().appendChild(block.get());
 			this.get().classList.add('formPosition');
@@ -90,6 +92,11 @@
 					};
 					new NewsModel().createNews(data);
 				}
+				document.body.removeChild(this.get());
+				document.body.removeChild(outSideBlock.get());
+			});
+			this.buttonClose.get().addEventListener('click', button => {
+				button.preventDefault();
 				document.body.removeChild(this.get());
 				document.body.removeChild(outSideBlock.get());
 			})

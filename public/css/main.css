@@ -17,9 +17,8 @@
 }
 
 .tag_menu {
-	background-color: #f00;
 	float: left;
-	width: 20%;
+	width: 23%;
 }
 
 .tagPadding{
@@ -36,9 +35,9 @@ li{
 }
 
 .main_news {
-	width: 75%;
+	width: 74%;
 	float: left;
-	margin-right: 5%;
+	margin-right: 2%;
 }
 
 .news {
@@ -54,12 +53,12 @@ li{
 }
 
 .create {
-	background-color: cornflowerblue;
+	background-color: #e4e6c3;
 	border: none;
 	height: 40px;
 	font-size: medium;
 	width: 18%;
-	border-radius: 10px;
+	border-radius: 5px;
 }
 
 .mainBarItems{
@@ -69,6 +68,7 @@ li{
 }
 
 .create:hover {
+	/*background-color: #899878;*/
 	box-shadow: inset 0 0 8px black;
 }
 
@@ -77,12 +77,21 @@ li{
 }
 
 .tagButton{
-	font-size: medium;
-	height: 40px;
+	font-size: large;
+	height: auto;
 	border-style: solid;
 	border-width: 3px;
-	background-color: white;
-	border-radius: 20px;
+	border-radius: 12px;
+	padding-right: 0.5vw;
+	padding-left: 0.5vw;
+	padding-top: 0.5vh;
+	padding-bottom: 0.5vh;
+	margin-left: 5%;
+	margin-top: 5%;
+}
+
+.tagButton:hover{
+	box-shadow: inset 0 0 8px black;
 }
 
 .newsFormBlock {
@@ -108,7 +117,18 @@ li{
 }
 
 .titleForm {
-	width: 75%;
+	width: 90%;
+	padding-bottom: 1vh;
+	padding-top: 1vh;
+	padding-left: 1vw;
+	padding-right: 1vw;
+	margin-right: 0.5vw;
+	margin-bottom: 1vh;
+	margin-top: 1vh
+}
+
+textarea{
+	height: 15vh;
 }
 
 .formPosition {
@@ -122,15 +142,25 @@ li{
 
 
 select{
-	float: left
+	float: left;
+	padding-bottom: 1vh;
+	padding-top: 1vh;
+	padding-left: 1vw;
+	padding-right: 1vw;
+	width: 44.5%;
+	margin-right: 0.5vw;
 }
+
 
 br{
 	float:left
 }
 
 .inputCategory{
-	float:left
+	float:left;
+	width: 44.5%;
+	margin-top : 0;
+	margin-bottom: 0;
 }
 
 .formPadding{
@@ -153,5 +183,11 @@ br{
 	padding-right: 1vw;
 	margin-left : 0.5vw;
 	margin-right: 0.5vw;
+	border-radius: 5px;
+	background-color: #c1bfb5;
+}
 
+.mainBarButton:hover{
+	/*background-color: #fefdff;*/
+	box-shadow: inset 0 0 8px black;
 }

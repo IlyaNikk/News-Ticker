@@ -39,6 +39,7 @@
 			this.get().appendChild(this.content.get());
 			this.get().appendChild(this.editButton.get());
 			this.get().appendChild(this.deleteButton.get());
+			this.get().classList.add('news_appear');
 			document.body.querySelector('.main_news').appendChild(this.get());
 		}
 
@@ -49,13 +50,19 @@
 			});
 			this.deleteButton.get().addEventListener('click', button =>{
 				button.preventDefault();
-				new NewsModel().deleteNews(this.id);
+				new NewsModel().deleteNews(this.id)
+					.then( () => {
+						this.get().classList.add('news_remove');
+						setTimeout(() => {
+							this.clearNew();
+						}, 1300);
+					});
+
 			});
 		}
 
 		clearNew(){
 			document.body.querySelector('.main_news').removeChild(this.get());
-
 		}
 
 	}

@@ -19,6 +19,7 @@
 			this.get().appendChild(block.get());
 			document.body.appendChild(this.get());
 			this.categoryArray = [];
+			this.buttonsArray = [];
 		}
 
 		addCategory(category){
@@ -27,10 +28,22 @@
 			link.get().classList.remove('create');
 			link.get().classList.add('tagButton');
 			this.list.get().appendChild(link.get());
-			link.get().addEventListener('click', link => {
-				link.preventDefault();
+			this.buttonsArray.push(link);
+			link.get().addEventListener('click', button => {
+				button.preventDefault();
+				let count;
+				this.buttonsArray.forEach((item) => {
+					item.get().classList.remove('tagButton_pressed');
+				});
+				this.categoryArray.forEach( (item, i) => {
+					if (item === category){
+						count = i;
+					}
+				});
+				this.buttonsArray[count].get().classList.add('tagButton_pressed');
 				new NewsModel().searchNewsCategory(category)
 					.then(result => {
+						console.log(count);
 						// let newsAll = document.querySelectorAll('.news');
 						// let mainNews = document.querySelector('.main_news');
 						// newsAll.forEach(news => {

@@ -52,6 +52,7 @@
 				button.preventDefault();
 				new NewsModel().deleteNews(this.id)
 					.then( () => {
+						this.get().classList.remove('news_appear');
 						this.get().classList.add('news_remove');
 						setTimeout(() => {
 							this.clearNew();

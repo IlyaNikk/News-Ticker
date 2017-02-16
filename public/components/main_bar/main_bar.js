@@ -1,6 +1,6 @@
 'use strict';
 
-(function(){
+(function () {
 
 	const Block = window.Block;
 	const Button = window.Button;
@@ -42,43 +42,17 @@
 			});
 		}
 
-		addSearchListener() {
+		addSearchListener(callback){
 			this.searchButton.get().addEventListener('click', button => {
 				button.preventDefault();
 				let searchWord = this.searchInput.get().value;
 				new NewsModel().searchNews(searchWord)
-					.then(result => {
-						// let newsAll = document.querySelectorAll('.news');
-						// let mainNews = document.querySelector('.main_news');
-						// newsAll.forEach(news => {
-						// 	mainNews.removeChild(news);
-						// });
-						// result.forEach(news => {
-						// 	let newBlock = new NewsBlock();
-						// 	newBlock.createNews(news)
-						// });
+					.then( (result) => {
+						callback(result);
 						this.rememberResult(result);
 						return Promise.resolve(result);
 					});
-				});
-		}
-
-		rememberResult(result){
-			this.result = result;
-		}
-
-		check(){
-			if (!this.result){
-				return false;
-			} else {
-				return true;
-			}
-		}
-
-		getResult(){
-			let buffer = this.result;
-			this.result = !this.result;
-			return buffer;
+			});
 		}
 
 	}

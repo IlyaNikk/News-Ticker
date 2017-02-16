@@ -1,14 +1,14 @@
 'use strict';
 
-(function(){
+(function () {
 
 	const Block = window.Block;
 	const Content = window.Content;
 	const MainBar = window.MainBar;
 	const NewsModel = window.NewsModel;
 
-	class MainView{
-		constructor(tag, blocks = {}){
+	class MainView {
+		constructor(tag, blocks = {}) {
 			this.mainBar = new MainBar();
 			document.body.appendChild(this.mainBar.get());
 			this.block = new Block('div', {});
@@ -17,17 +17,17 @@
 			document.body.appendChild(this.block.get());
 		}
 
-		setNews(){
+		setNews() {
 			new NewsModel().getNews()
 				.then(result => {
 					result.reverse();
-					result.forEach((news) =>{
+					result.forEach((news) => {
 						this.content.setNew(news);
 					});
 				})
 		}
 
-		getCategories(){
+		getCategories() {
 			new NewsModel().getCategories()
 				.then(result => {
 					result.forEach((category) => {
@@ -35,21 +35,14 @@
 					});
 					this.mainBar.addListener(result);
 				});
-			this.mainBar.addSearchListener();
-			this.checkSearch();
+			this.result = this.mainBar.addSearchListener(this.checkSearch.bind(this));
 		}
 
-		checkSearch(){
-			setTimeout(() => {
-				if(this.mainBar.check()){
-					this.content.clearNew();
-					let news = this.mainBar.getResult();
-					news.forEach(news => {
-						this.content.setNew(news);
-					});
-				}
-				this.checkSearch();
-			},1000)
+		checkSearch(result) {
+			this.content.clearNew();
+			result.forEach(news => {
+				this.content.setNew(news);
+			});
 		}
 
 	}

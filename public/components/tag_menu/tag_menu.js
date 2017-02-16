@@ -22,7 +22,7 @@
 			this.buttonsArray = [];
 		}
 
-		addCategory(category){
+		addCategory(category, callback){
 			this.categoryArray.push(category);
 			let link = new Button(category);
 			link.get().classList.remove('create');
@@ -53,6 +53,7 @@
 						// 	let newBlock = new NewsBlock();
 						// 	newBlock.createNews(news)
 						// });
+						callback(result);
 						this.rememberResult(result);
 						return Promise.resolve(result);
 					});

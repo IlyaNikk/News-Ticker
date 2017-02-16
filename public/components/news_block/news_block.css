@@ -32,7 +32,7 @@
 }
 
 .news_appear{
-	animation: appear 2s ease-out;
+	animation: appear 1.2s ease-out;
 }
 
 @keyframes appear{

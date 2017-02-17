@@ -33,9 +33,9 @@
 					result.forEach((category) => {
 						this.content.setCategory(category.name);
 					});
-					this.mainBar.addListener(result);
+					this.mainBar.addListener(result, this.content.setNew.bind(this.content));
 				});
-			this.result = this.mainBar.addSearchListener(this.checkSearch.bind(this));
+			this.result = this.mainBar.addSearchListener(this.setNews.bind(this));
 		}
 
 		checkSearch(result) {

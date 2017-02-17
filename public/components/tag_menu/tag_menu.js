@@ -43,16 +43,6 @@
 				this.buttonsArray[count].get().classList.add('tagButton_pressed');
 				new NewsModel().searchNewsCategory(category)
 					.then(result => {
-						console.log(count);
-						// let newsAll = document.querySelectorAll('.news');
-						// let mainNews = document.querySelector('.main_news');
-						// newsAll.forEach(news => {
-						// 	mainNews.removeChild(news);
-						// });
-						// result.forEach(news => {
-						// 	let newBlock = new NewsBlock();
-						// 	newBlock.createNews(news)
-						// });
 						callback(result);
 						this.rememberResult(result);
 						return Promise.resolve(result);

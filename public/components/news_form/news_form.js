@@ -1,14 +1,14 @@
 'use strict';
 
-(function(){
+(function () {
 
 	const Block = window.Block;
 	const Button = window.Button;
 	const NewsModel = window.NewsModel;
 
 
-	class NewForm extends Block{
-		constructor(categories){
+	class NewForm extends Block {
+		constructor(categories, callback) {
 			super('div');
 			let outsideBlock = new Block('div');
 			outsideBlock.get().classList.add('newsFormBlock');
@@ -20,7 +20,7 @@
 			this.title.get().innerHTML = 'Create news';
 			this.newsTitle.get().innerHTML = 'Enter title';
 			this.newsTitleInput = new Block('input', {
-				name : 'title',
+				name: 'title',
 				placeholder: 'Enter title here'
 			});
 			this.newsTitleInput.get().classList.add('titleForm');
@@ -35,14 +35,11 @@
 				placeholder: 'Enter text here'
 			});
 			this.mainContent.get().classList.add('titleForm');
-
 			this.select = new Block('select');
 			let init = new Block('option');
 			init.get().innerHTML = 'Select category from list';
 			this.select.get().appendChild(init.get());
-
-
-			categories.forEach( category => {
+			categories.forEach(category => {
 				let option = new Block('option');
 				option.get().innerHTML = category.name;
 				this.select.get().appendChild(option.get());
@@ -62,26 +59,25 @@
 			this.get().classList.add('formPosition');
 			document.body.insertBefore(this.get(), document.body.children[0]);
 			document.body.insertBefore(outsideBlock.get(), document.body.children[0]);
-			this.addListener(outsideBlock);
+			this.addListener(outsideBlock, callback);
 		}
 
-		addListener(outSideBlock){
+		addListener(outSideBlock, callback) {
 			this.button.get().addEventListener('click', button => {
 				button.preventDefault();
 				let title = this.newsTitleInput.get().value;
 				let category = this.categories.get().value;
 				let select = this.select.get().value;
 				let content = this.mainContent.get().value;
-				if(select === 'Select category from list'){
+				if (select === 'Select category from list') {
 					new NewsModel().createCategory(category)
 						.then(result => {
-							console.log(category);
 							let data = {
 								title: title,
 								category: category,
 								content: content
 							};
-							new NewsModel().createNews(data);
+									this.getAndSet(data, content, callback);
 						})
 				} else {
 					category = select;
@@ -90,7 +86,7 @@
 						category: category,
 						content: content
 					};
-					new NewsModel().createNews(data);
+					this.getAndSet(data, content, callback);
 				}
 				document.body.removeChild(this.get());
 				document.body.removeChild(outSideBlock.get());
@@ -101,6 +97,17 @@
 				document.body.removeChild(outSideBlock.get());
 			})
 		}
+
+		getAndSet(data, content, callback){
+			new NewsModel().createNews(data)
+				.then(result => {
+					new NewsModel().searchNews(content)
+						.then(result => {
+							callback(result[0]);
+						});
+				});
+		}
+
 	}
 
 	window.NewForm = NewForm;

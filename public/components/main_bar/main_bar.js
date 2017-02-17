@@ -35,10 +35,10 @@
 			document.body.appendChild(this.get());
 		}
 
-		addListener(categories) {
+		addListener(categories, callback) {
 			this.button.get().addEventListener('click', _button => {
 				_button.preventDefault();
-				let form = new NewsForm(categories);
+				let form = new NewsForm(categories, callback);
 			});
 		}
 

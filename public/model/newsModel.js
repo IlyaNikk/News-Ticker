@@ -24,7 +24,6 @@
 		}
 
 		createNews(data) {
-			console.log(data);
 			return fetch(this.host + 'api/news', {
 				method: 'POST',
 				mode: 'cors',
@@ -37,7 +36,7 @@
 				if (result.status >= 300) {
 					throw new Error();
 				}
-				return new Promise.resolve()
+				return new Promise.resolve();
 			}).catch((error) => {
 				return error;
 			})
@@ -108,7 +107,7 @@
 				if (result.status >= 300) {
 					throw new Error();
 				}
-				return result.json()
+				return result.json();
 			}).catch(error => {
 				return error;
 			})
@@ -154,6 +153,10 @@
 			}).catch(error => {
 				return error;
 			})
+		}
+
+		returnPromise(){
+			return new Promise.resolve();
 		}
 	}
 

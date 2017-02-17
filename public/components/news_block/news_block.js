@@ -1,15 +1,15 @@
 'use strict';
 
-(function(){
+(function () {
 
 	const Block = window.Block;
 	const Button = window.Button;
 	const EditForm = window.EditForm;
 	const NewsModel = window.NewsModel;
 
-	class NewsBlock extends Block{
-		constructor(){
-			super('div',{});
+	class NewsBlock extends Block {
+		constructor() {
+			super('div', {});
 			this.header = new Block('h1', {});
 			this.categoriesTitle = new Block('h4', {});
 			this.content = new Block('p', {});
@@ -22,13 +22,13 @@
 			this.categoriesArray = [];
 		}
 
-		createNews(news){
+		createNews(news) {
 			this.id = news.id;
 			this.header.get().innerHTML = news.title;
 			//news.categories.forEach((categorie) => {
-				this.newCategorie = new Block('h3');
-				this.newCategorie.get().innerHTML = news.category.name;
-				this.get().appendChild(this.newCategorie.get());
+			this.newCategorie = new Block('h3');
+			this.newCategorie.get().innerHTML = news.category.name;
+			this.get().appendChild(this.newCategorie.get());
 			this.categoriesArray.push(news.category.name);
 			//});
 			this.content.get().innerHTML = news.content;
@@ -40,18 +40,19 @@
 			this.get().appendChild(this.editButton.get());
 			this.get().appendChild(this.deleteButton.get());
 			this.get().classList.add('news_appear');
-			document.body.querySelector('.main_news').appendChild(this.get());
+			document.body.querySelector('.main_news').insertBefore(this.get(),
+				document.body.querySelector('.main_news').children[0]);
 		}
 
-		addListener(){
-			this.editButton.get().addEventListener('click', button =>{
+		addListener() {
+			this.editButton.get().addEventListener('click', button => {
 				button.preventDefault();
 				let form = new EditForm(this.content.get().innerHTML, this.id);
 			});
-			this.deleteButton.get().addEventListener('click', button =>{
+			this.deleteButton.get().addEventListener('click', button => {
 				button.preventDefault();
 				new NewsModel().deleteNews(this.id)
-					.then( () => {
+					.then(() => {
 						this.get().classList.remove('news_appear');
 						this.get().classList.add('news_remove');
 						setTimeout(() => {
@@ -62,7 +63,7 @@
 			});
 		}
 
-		clearNew(){
+		clearNew() {
 			document.body.querySelector('.main_news').removeChild(this.get());
 		}
 

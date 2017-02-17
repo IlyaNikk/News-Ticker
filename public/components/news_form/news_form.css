@@ -1,0 +1,74 @@
+.newsFormBlock {
+	position: absolute;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	width: 95vw;
+	height: 100vh;
+	z-index: 2;
+}
+
+.newsForm {
+	border-width: thick;
+	border-color: black;
+	border-style: ridge;
+	background-color: white;
+	padding-left: 3%;
+	padding-right: 3%;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+}
+
+.newsForm_appear{
+	animation: appear 0.5s ease-out;
+}
+
+.newsForm_disappear{
+	animation: disappear 0.5s ease-out;
+}
+
+.errorText_appear{
+	font-size: 18px;
+	height: 18px;
+	color: red;
+	margin-top: 1%;
+	margin-bottom: 2%;
+	animation: error_appear 0.5s ease;
+}
+
+.errorText_disappear{
+	font-size: 18px;
+	height: 18px;
+	animation: error_disappear 0.5s ease;
+	color: red;
+}
+
+@keyframes appear{
+	from{
+		margin-bottom: 90vh;
+		opacity: 0;
+	}
+}
+
+@keyframes disappear{
+	to{
+		margin-top: 90vh;
+		opacity: 0;
+	}
+}
+
+@keyframes error_appear{
+	from{
+		margin-bottom: -4%;
+		opacity: 0;
+	}
+}
+
+@keyframes error_disappear{
+	to{
+		margin-top: -3%;
+		opacity: 0;
+	}
+}
+

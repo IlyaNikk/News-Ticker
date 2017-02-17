@@ -10,10 +10,11 @@
 	class NewForm extends Block {
 		constructor(categories, callback) {
 			super('div');
-			let outsideBlock = new Block('div');
-			outsideBlock.get().classList.add('newsFormBlock');
-			let block = new Block('div');
-			block.get().classList.add('newsForm');
+			this.outsideBlock = new Block('div');
+			this.outsideBlock.get().classList.add('newsFormBlock');
+			this.block = new Block('div');
+			this.block.get().classList.add('newsForm');
+			this.block.get().classList.add('newsForm_appear');
 			this.title = new Block('h1');
 			this.form = new Block('form');
 			this.newsTitle = new Block('h3');
@@ -45,6 +46,7 @@
 				this.select.get().appendChild(option.get());
 			});
 			this.button = new Button('Create');
+			this.button.get().disabled = true;
 			this.buttonClose = new Button('Close');
 			this.form.get().appendChild(this.title.get());
 			this.form.get().appendChild(this.newsTitle.get());
@@ -54,12 +56,13 @@
 			this.form.get().appendChild(this.mainContent.get());
 			this.form.get().appendChild(this.button.get());
 			this.form.get().appendChild(this.buttonClose.get());
-			block.get().appendChild(this.form.get());
-			outsideBlock.get().appendChild(block.get());
+			this.block.get().appendChild(this.form.get());
+			this.outsideBlock.get().appendChild(this.block.get());
 			this.get().classList.add('formPosition');
 			document.body.insertBefore(this.get(), document.body.children[0]);
-			document.body.insertBefore(outsideBlock.get(), document.body.children[0]);
-			this.addListener(outsideBlock, callback);
+			document.body.insertBefore(this.outsideBlock.get(), document.body.children[0]);
+			this.addListener(this.outsideBlock, callback);
+			this.inputListeners();
 		}
 
 		addListener(outSideBlock, callback) {
@@ -77,7 +80,7 @@
 								category: category,
 								content: content
 							};
-									this.getAndSet(data, content, callback);
+							this.getAndSet(data, content, callback);
 						})
 				} else {
 					category = select;
@@ -93,12 +96,31 @@
 			});
 			this.buttonClose.get().addEventListener('click', button => {
 				button.preventDefault();
-				document.body.removeChild(this.get());
-				document.body.removeChild(outSideBlock.get());
+				this.block.get().classList.remove('newsForm_appear');
+				this.block.get().classList.add('newsForm_disappear');
+				setTimeout(() => {
+					document.body.removeChild(this.get());
+					document.body.removeChild(outSideBlock.get());
+				}, 800);
 			})
 		}
 
-		getAndSet(data, content, callback){
+		inputListeners() {
+			this.newsTitleInput.get().addEventListener('change', input => {
+				let errorBlock = new Block('p');
+				if (document.body.querySelector('.errorText_appear') && input.target.value.length){
+					this.form.get().children[3].classList.remove('errorText_appear');
+					this.form.get().children[3].classList.add('errorText_disappear');
+					setTimeout(() => this.form.get().removeChild(this.form.get().children[3]), 500);
+				} else if (!input.target.value.length) {
+					errorBlock.get().innerHTML = "News title can't be empty. Please, enter it";
+					errorBlock.get().classList.add('errorText_appear');
+					this.form.get().insertBefore(errorBlock.get(), this.form.get().children[3]);
+				}
+			})
+		}
+
+		getAndSet(data, content, callback) {
 			new NewsModel().createNews(data)
 				.then(result => {
 					new NewsModel().searchNews(content)

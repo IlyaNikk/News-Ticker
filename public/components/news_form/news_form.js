@@ -101,23 +101,61 @@
 				setTimeout(() => {
 					document.body.removeChild(this.get());
 					document.body.removeChild(outSideBlock.get());
-				}, 800);
+				}, 500);
 			})
 		}
 
 		inputListeners() {
-			this.newsTitleInput.get().addEventListener('change', input => {
-				let errorBlock = new Block('p');
-				if (document.body.querySelector('.errorText_appear') && input.target.value.length){
+			this.newsTitleInput.get().addEventListener('focus', input => {
+				if (document.body.querySelector('.errorTextTitle_appear')){
 					this.form.get().children[3].classList.remove('errorText_appear');
-					this.form.get().children[3].classList.add('errorText_disappear');
+					this.form.get().children[3].classList.add('errorTextTitle_disappear');
 					setTimeout(() => this.form.get().removeChild(this.form.get().children[3]), 500);
-				} else if (!input.target.value.length) {
-					errorBlock.get().innerHTML = "News title can't be empty. Please, enter it";
-					errorBlock.get().classList.add('errorText_appear');
-					this.form.get().insertBefore(errorBlock.get(), this.form.get().children[3]);
 				}
-			})
+			});
+			this.newsTitleInput.get().addEventListener('blur', input =>{
+				if (!input.target.value.length) {
+					let errorBlock = new Block('p');
+					errorBlock.get().innerHTML = "News title can't be empty. Please, enter it";
+					errorBlock.get().classList.add('errorTextTitle_appear');
+					this.form.get().insertBefore(errorBlock.get(), this.form.get().children[3]);
+					this.contentFill = false;
+					this.checkFill();
+				} else {
+					this.titleFill = true;
+					this.checkFill();
+				}
+			});
+			this.mainContent.get().addEventListener('focus', input => {
+				let afterTextArea = this.form.get().getElementsByTagName('button');
+				if (document.body.querySelector('.errorTextContent_appear')) {
+					this.form.get().querySelector('.errorContent').classList.remove('errorTextContent_appear');
+					this.form.get().querySelector('.errorContent').classList.add('errorTextContent_disappear');
+					setTimeout(() => this.form.get().removeChild(this.form.get().querySelector('.errorContent'), 500));
+				}
+			});
+			this.mainContent.get().addEventListener('blur', input => {
+				if (!input.target.value.length) {
+					let errorBlock = new Block('p');
+					errorBlock.get().innerHTML = "News title can't be empty. Please, enter it";
+					errorBlock.get().classList.add('errorTextContent_appear');
+					errorBlock.get().classList.add('errorContent');
+					this.form.get().insertBefore(errorBlock.get(), this.form.get().getElementsByTagName('button')[0]);
+					this.contentFill = false;
+					this.checkFill();
+				} else {
+					this.contentFill = true;
+					this.checkFill();
+				}
+			});
+		}
+
+		checkFill(){
+			if(this.titleFill && this.contentFill){
+				this.button.get().disabled = false;
+			} else {
+				this.button.get().disabled = true;
+			}
 		}
 
 		getAndSet(data, content, callback) {

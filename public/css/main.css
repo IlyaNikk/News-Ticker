@@ -21,6 +21,11 @@
 	width: 23%;
 }
 
+.tag_menu_adaptive{
+	float: left;
+	width: 100%;
+}
+
 li{
 	margin-left: 5%;
 	margin-top: 5%;
@@ -32,6 +37,11 @@ li{
 	width: 74%;
 	float: left;
 	margin-right: 2%;
+}
+
+.main_news_adaptive{
+	width: 100%;
+	float: left;
 }
 
 .create {

@@ -12,6 +12,7 @@
 			this.mainBar = new MainBar();
 			document.body.appendChild(this.mainBar.get());
 			this.block = new Block('div', {});
+			this.block.get().classList.add('content');
 			this.content = new Content();
 			this.block.get().appendChild(this.content.get());
 			document.body.appendChild(this.block.get());

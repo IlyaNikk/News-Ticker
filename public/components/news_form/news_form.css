@@ -28,7 +28,7 @@
 	animation: disappear 0.5s ease-out;
 }
 
-.errorText_appear{
+.errorTextTitle_appear{
 	font-size: 18px;
 	height: 18px;
 	color: red;
@@ -37,7 +37,23 @@
 	animation: error_appear 0.5s ease;
 }
 
-.errorText_disappear{
+.errorTextTitle_disappear{
+	font-size: 18px;
+	height: 18px;
+	animation: error_disappear 0.5s ease;
+	color: red;
+}
+
+.errorTextContent_appear{
+	font-size: 18px;
+	height: 18px;
+	color: red;
+	margin-top: 1%;
+	margin-bottom: 2%;
+	animation: error_appear 0.5s ease;
+}
+
+.errorTextContent_disappear{
 	font-size: 18px;
 	height: 18px;
 	animation: error_disappear 0.5s ease;

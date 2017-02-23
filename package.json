@@ -9,9 +9,7 @@
     "karma:start": "karma start",
     "karma:run": "karma run",
     "start": "node server.js"
-
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/frontend-park-mail-ru/2016_2_Unpredictable.git"
@@ -52,6 +50,6 @@
     "precss": "1.4.0",
     "sass-loader": "4.0.2",
     "style-loader": "0.13.1",
-    "url-loader": "^0.5.7",
+    "url-loader": "^0.5.7"
   }
 }

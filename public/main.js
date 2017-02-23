@@ -12,37 +12,37 @@
 	let changed = false;
 
 	window.addEventListener('resize', size => {
-		if(innerWidth < 1000 && !changed) {
-			let tag_menu = document.body.querySelector('.tag_menu');
-			let content = document.body.querySelector('.main_news');
+		if(innerWidth < 850 && !changed) {
+			let tag_menu = document.body.querySelector('.tag-block');
+			let content = document.body.querySelector('.news-block');
 			let buffer = document.body.querySelector('.content');
-			buffer.children[0].removeChild(document.body.querySelector('.tag_menu'));
-			buffer.children[0].removeChild(document.body.querySelector('.main_news'));
-			tag_menu.classList.remove('tag_menu');
-			let array = tag_menu.querySelectorAll('.tagButton');
+			buffer.children[0].removeChild(document.body.querySelector('.tag-block'));
+			buffer.children[0].removeChild(document.body.querySelector('.news-block'));
+			tag_menu.classList.remove('tag-block');
+			let array = tag_menu.querySelectorAll('.tag-block__button');
 			array.forEach(button => {
-				button.classList.add('tagButton_adaptive');
+				button.classList.add('tag-block__button_adaptive');
 			});
-			content.classList.remove('main_news');
-			tag_menu.classList.add('tag_menu_adaptive');
-			content.classList.add('main_news_adaptive');
+			content.classList.remove('news-block');
+			tag_menu.classList.add('tag-block_adaptive');
+			content.classList.add('news-block_adaptive');
 			buffer.children[0].appendChild(tag_menu);
 			buffer.children[0].appendChild(content);
 			changed = true;
-		} else if(innerWidth >= 1000 && changed){
-			let tag_menu = document.body.querySelector('.tag_menu_adaptive');
-			let content = document.body.querySelector('.main_news_adaptive');
+		} else if(innerWidth >= 850 && changed){
+			let tag_menu = document.body.querySelector('.tag-block_adaptive');
+			let content = document.body.querySelector('.news-block_adaptive');
 			let buffer = document.body.querySelector('.content');
-			buffer.children[0].removeChild(document.body.querySelector('.tag_menu_adaptive'));
-			buffer.children[0].removeChild(document.body.querySelector('.main_news_adaptive'));
-			tag_menu.classList.remove('tag_menu_adaptive');
-			content.classList.remove('main_news_adaptive');
-			tag_menu.classList.add('tag_menu');
-			let array = tag_menu.querySelectorAll('.tagButton');
+			buffer.children[0].removeChild(document.body.querySelector('.tag-block_adaptive'));
+			buffer.children[0].removeChild(document.body.querySelector('.news-block_adaptive'));
+			tag_menu.classList.remove('tag-block_adaptive');
+			content.classList.remove('news-block_adaptive');
+			tag_menu.classList.add('tag-block');
+			let array = tag_menu.querySelectorAll('.tag-block__button');
 			array.forEach(button => {
-				button.classList.remove('tagButton_adaptive');
+				button.classList.remove('tag-block__button_adaptive');
 			});
-			content.classList.add('main_news');
+			content.classList.add('news-block');
 			buffer.children[0].appendChild(content);
 			buffer.children[0].appendChild(tag_menu);
 			changed = false;

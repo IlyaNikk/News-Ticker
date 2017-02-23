@@ -9,9 +9,10 @@
 	class Content extends Block {
 		constructor() {
 			super('div', {});
-			this.get().classList.add('center');
+			this.get().classList.add('content');
+			this.get().classList.add('content_position');
 			this.mainNewsBlock = new Block('div');
-			this.mainNewsBlock.get().classList.add('main_news');
+			this.mainNewsBlock.get().classList.add('news-block');
 			this.TagMenu = new TagMenu();
 			this.get().appendChild(this.mainNewsBlock.get());
 			this.get().appendChild(this.TagMenu.get());

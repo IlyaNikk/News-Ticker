@@ -8,12 +8,12 @@
 	class TagMenu extends Block{
 		constructor(){
 			super('div', {});
-			this.get().classList.add('tag_menu');
+			this.get().classList.add('tag-block');
 			let title = new Block('h2');
 			this.list = new Block('ol');
 			title.get().innerHTML = "Categories:";
 			let block = new Block('div');
-			block.get().classList.add('tagPadding');
+			block.get().classList.add('tag-block_padding');
 			block.get().appendChild(title.get());
 			block.get().appendChild(this.list.get());
 			this.get().appendChild(block.get());
@@ -26,23 +26,24 @@
 			this.categoryArray.push(category);
 			let link = new Button(category);
 			link.get().classList.remove('create');
-			link.get().classList.add('tagButton');
+			link.get().classList.add('tag-block__button');
 			this.list.get().appendChild(link.get());
 			this.buttonsArray.push(link);
 			link.get().addEventListener('click', button => {
 				button.preventDefault();
 				let count;
 				this.buttonsArray.forEach((item) => {
-					item.get().classList.remove('tagButton_pressed');
+					item.get().classList.remove('tag-block__button_pressed');
 				});
 				this.categoryArray.forEach( (item, i) => {
 					if (item === category){
 						count = i;
 					}
 				});
-				this.buttonsArray[count].get().classList.add('tagButton_pressed');
+				this.buttonsArray[count].get().classList.add('tag-block__button_pressed');
 				new NewsModel().searchNewsCategory(category)
 					.then(result => {
+						debugger;
 						callback(result);
 						this.rememberResult(result);
 						return Promise.resolve(result);

@@ -11,23 +11,23 @@
 	class MainBar extends Block {
 		constructor() {
 			super('div', {});
-			this.get().classList.add('main_bar');
-			this.get().classList.add('center');
+			this.get().classList.add('main-bar');
+			this.get().classList.add('main-bar_position_center');
 			this.searchInput = new Block('input', {
 				placeholder: 'Search',
 			});
-			this.searchInput.get().classList.add('mainBarItems');
-			this.searchInput.get().classList.add('searchInput');
+			this.searchInput.get().classList.add('main-bar__input');
+			this.searchInput.get().classList.add('main-bar__input_position');
 			this.searchButton = new Button('Search');
 			this.searchButton.get().classList.remove('create');
-			this.searchButton.get().classList.add('mainBarItems');
-			this.searchButton.get().classList.add('mainBarButton');
+			this.searchButton.get().classList.add('main-bar__button');
+			this.searchButton.get().classList.add('main-bar__button-search_position');
 			this.button = new Button('Create new');
 			this.button.get().classList.remove('create');
-			this.button.get().classList.add('mainBarItems');
-			this.button.get().classList.add('mainBarButton');
+			this.button.get().classList.add('main-bar__button');
+			this.button.get().classList.add('main-bar__button-create_position');
 			let form = new Block('form');
-			form.get().classList.add('formPadding');
+			form.get().classList.add('form_position');
 			form.get().appendChild(this.searchInput.get());
 			form.get().appendChild(this.searchButton.get());
 			form.get().appendChild(this.button.get());

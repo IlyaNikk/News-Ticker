@@ -1,4 +1,4 @@
-.newsFormBlock {
+.news-form {
 	position: absolute;
 	display: flex;
 	flex-wrap: wrap;
@@ -8,7 +8,16 @@
 	z-index: 2;
 }
 
-.newsForm {
+.news-form__background{
+	width: 98vw;
+	height: 100vh;
+	position: absolute;
+	background-color: black;
+	opacity: 0.6;
+	z-index: 1;
+}
+
+.news-form_position {
 	border-width: thick;
 	border-color: black;
 	border-style: ridge;
@@ -20,15 +29,65 @@
 	width: 50%;
 }
 
-.newsForm_appear{
+.news-form_appear{
 	animation: appear 0.5s ease-out;
 }
 
-.newsForm_disappear{
+.news-form_disappear{
 	animation: disappear 0.5s ease-out;
 }
 
-.errorTextTitle_appear{
+.news-form__input-title_position{
+	width: 90%;
+	padding-bottom: 1vh;
+	padding-top: 1vh;
+	padding-left: 1vw;
+	padding-right: 1vw;
+	margin-right: 0.5vw;
+	margin-bottom: 1vh;
+	margin-top: 1vh;
+}
+
+.news-form__select_size{
+	float: left;
+	padding-bottom: 1vh;
+	padding-top: 1vh;
+	padding-left: 1vw;
+	padding-right: 1vw;
+	width: 44.5%;
+	margin-right: 0.5vw;
+}
+
+.news-form__input-category_position{
+	width: 90%;
+	padding-bottom: 1vh;
+	padding-top: 1vh;
+	padding-left: 1vw;
+	padding-right: 1vw;
+	margin-right: 0.5vw;
+	margin-bottom: 1vh;
+	margin-top: 1vh;
+}
+
+.news-form__input-category_size{
+	float:left;
+	width: 44.5%;
+	margin-top : 0;
+	margin-bottom: 0;
+}
+
+.news-form__textarea-content_position{
+	width: 90%;
+	padding-bottom: 1vh;
+	padding-top: 1vh;
+	padding-left: 1vw;
+	padding-right: 1vw;
+	margin-right: 0.5vw;
+	margin-bottom: 1vh;
+	margin-top: 1vh;
+}
+
+.news-form__error-text-title_appear{
 	font-size: 18px;
 	height: 18px;
 	color: red;
@@ -37,14 +96,14 @@
 	animation: error_appear 0.5s ease;
 }
 
-.errorTextTitle_disappear{
+.news-form__error-text-title_disappear{
 	font-size: 18px;
 	height: 18px;
 	animation: error_disappear 0.5s ease;
 	color: red;
 }
 
-.errorTextContent_appear{
+.news-form__error-text-content_appear{
 	font-size: 18px;
 	height: 18px;
 	color: red;
@@ -53,11 +112,15 @@
 	animation: error_appear 0.5s ease;
 }
 
-.errorTextContent_disappear{
+.news-form__error-text-content_disappear{
 	font-size: 18px;
 	height: 18px;
 	animation: error_disappear 0.5s ease;
 	color: red;
+}
+
+.news-form__textarea-content_size{
+	height: 15vh;
 }
 
 @keyframes appear{

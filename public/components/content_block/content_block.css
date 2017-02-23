@@ -1,0 +1,15 @@
+.content_position {
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.news-block {
+	width: 74%;
+	float: left;
+	margin-right: 2%;
+}
+
+.news-block_adaptive{
+	width: 100%;
+	float: left;
+}

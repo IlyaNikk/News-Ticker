@@ -1,10 +1,10 @@
-.tagPadding{
+.tag-block_padding{
 	padding-left: 5%;
 	padding-right: 5%;
 	padding-top: 5%;
 }
 
-.tagButton{
+.tag-block__button{
 	font-size: large;
 	height: auto;
 	border-style: solid;
@@ -21,17 +21,27 @@
 	background-color: white;
 }
 
-.tagButton_adaptive{
+.tag-block__button_adaptive{
 	margin-left: 1%;
 	margin-top: 1%;
 	margin-bottom: 1%;
 }
 
-.tagButton_pressed{
+.tag-block__button_pressed{
 	background-color: #c1bfb5;
 }
 
-.tagButton:hover{
+.tag-block__button:hover{
 	background-color: #c1bfb5;
+}
+
+.tag-block {
+	float: left;
+	width: 23%;
+}
+
+.tag-block_adaptive{
+	float: left;
+	width: 100%;
 }
 

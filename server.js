@@ -11,7 +11,7 @@ const sessions = new Map();
 
 const app = express();
 app.use(compression());
-app.use('/', express.static('public'));
+app.use('/', express.static('dist'));
 
 app.listen(process.env.PORT || 3000, () => {
 	console.log(`App started on port ${process.env.PORT || 3000}`);

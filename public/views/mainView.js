@@ -44,4 +44,31 @@ export default class MainView {
 		});
 	}
 
+	changeToAdaptive(oldClassTag, oldClassNews, newClassTag, newClassNews, adaptive) {
+		let tag_menu = document.body.querySelector('.' + oldClassTag);
+		let content = document.body.querySelector('.' + oldClassNews);
+		let buffer = document.body.querySelector('.content');
+		buffer.children[0].removeChild(document.body.querySelector('.' + oldClassTag));
+		buffer.children[0].removeChild(document.body.querySelector('.' + oldClassNews));
+		let array = tag_menu.querySelectorAll('.tag-block__button');
+		array.forEach(button => {
+			if (adaptive) {
+				button.classList.add('tag-block__button_adaptive');
+			} else {
+				button.classList.remove('tag-block__button_adaptive');
+			}
+		});
+		tag_menu.classList.remove(oldClassTag);
+		content.classList.remove(oldClassNews);
+		if(adaptive){
+			buffer.children[0].appendChild(tag_menu);
+			buffer.children[0].appendChild(content);
+		} else {
+			buffer.children[0].appendChild(content);
+			buffer.children[0].appendChild(tag_menu);
+		}
+		tag_menu.classList.add(newClassTag);
+		content.classList.add(newClassNews);
+	}
+
 }
